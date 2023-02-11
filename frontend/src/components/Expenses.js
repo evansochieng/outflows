@@ -6,4 +6,4 @@ function Expenses() {
   )
 }
 
-export default Expenses
+export default Expenses 
