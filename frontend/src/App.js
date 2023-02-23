@@ -20,7 +20,7 @@ function App() {
         <Route exact path="/home" element={<Home />} />
         <Route exact path="/income" element={<Income />} />
         <Route exact path="/expenses" element={<Expenses />} />
-        <Route exact path="/logout" element={<Logout />} />
+        <Route exact path="/logout" element={<Logout setIsLogin={setIsLogin}/>} />
       </Routes>)
       : <Login setIsLogin={setIsLogin}/>
       }
