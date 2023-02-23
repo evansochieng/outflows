@@ -22,7 +22,7 @@ const NavBar = () => {
         Outflows
       </h2>
       <div className="navigation-menu">
-        <Link to="/" exact="true" style={linkStyles}>
+        <Link to="/home" exact="true" style={linkStyles}>
           Home
         </Link>
         <Link to="/income" exact="true" style={linkStyles}>

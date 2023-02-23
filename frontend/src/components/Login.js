@@ -29,7 +29,7 @@ const Login = ({ setIsLogin }) => {
       // navigate user to home page
       setIsLogin(true);
       alert("Login successful!");
-      navigate("/");
+      navigate("/home");
     } else {
       alert("Username or password incorrect. Please try again.")
     }
