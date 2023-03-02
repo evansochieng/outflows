@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 function Income() {
   return (
-    <div>Income</div>
-  )
+    <div>
+      Income
+    </div>
+  );
 }
 
-export default Income
+export default Income;

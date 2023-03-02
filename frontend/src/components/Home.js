@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 const Home = () => {
-
   //define variable for balance
   const [balance, setBalance] = useState(0);
   const [income, setIncome] = useState(0);
@@ -20,29 +19,29 @@ const Home = () => {
           padding: "10px",
         }}
       >
-        <div class="card" style={{ width: "18rem", marginBottom: "30px" }}>
-          <div class="card-body">
-            <h5 class="card-title">MY BALANCE</h5>
-            <p class="card-text">Total Balance: $ {balance}</p>
+        <div className="card" style={{ width: "18rem", marginBottom: "30px" }}>
+          <div className="card-body">
+            <h5 className="card-title">MY BALANCE</h5>
+            <p className="card-text">Total Balance: $ {balance}</p>
           </div>
         </div>
 
-        <div class="card" style={{ width: "18rem", marginBottom: "30px" }}>
-          <div class="card-body">
-            <h5 class="card-title">INCOME</h5>
-            <p class="card-text">Total Income: $ {income}</p>
+        <div className="card" style={{ width: "18rem", marginBottom: "30px" }}>
+          <div className="card-body">
+            <h5 className="card-title">INCOME</h5>
+            <p className="card-text">Total Income: $ {income}</p>
           </div>
         </div>
 
-        <div class="card" style={{ width: "18rem", marginBottom: "30px" }}>
-          <div class="card-body">
-            <h5 class="card-title">EXPENSES</h5>
-            <p class="card-text">Total Expenses: $ {expense}</p>
+        <div className="card" style={{ width: "18rem", marginBottom: "30px" }}>
+          <div className="card-body">
+            <h5 className="card-title">EXPENSES</h5>
+            <p className="card-text">Total Expenses: $ {expense}</p>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Home
+export default Home;

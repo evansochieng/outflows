@@ -1,9 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import "../index.css"
+import React from "react";
+import { Link } from "react-router-dom";
+import "../index.css";
 
 const NavBar = () => {
-
   const linkStyles = {
     display: "inline-block",
     width: "100px",
@@ -18,9 +17,7 @@ const NavBar = () => {
   return (
     <nav className="navigation">
       {/* <i className="fa fa-money" style={{fontSize:"24px"}}></i> */}
-      <h2 className='app-name'>
-        Outflows
-      </h2>
+      <h2 className="app-name">Outflows</h2>
       <div className="navigation-menu">
         <Link to="/home" exact="true" style={linkStyles}>
           Home
@@ -37,6 +34,6 @@ const NavBar = () => {
       </div>
     </nav>
   );
-}
+};
 
-export default NavBar
+export default NavBar;
