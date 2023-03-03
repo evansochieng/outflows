@@ -1,9 +1,10 @@
 import React from "react";
+import AddExpense from "./AddExpense";
 
 function Expenses({ expenses }) {
   return (
     <div>
-      <div>
+      {/* <div>
         <div
           className="card"
           style={{ width: "60rem", marginBottom: "30px", marginTop: "30px" }}
@@ -30,6 +31,42 @@ function Expenses({ expenses }) {
               </button>
             </div>
             <p className="card-text">Total Expenses: $ {0}</p>
+          </div>
+        </div>
+      </div> */}
+      <div class="container-lg">
+        <div class="table-responsive">
+          <div class="table-wrapper">
+            <div class="table-title">
+              <div class="row">
+                <div class="col-sm-8">
+                  <h2>
+                    <b>Expenses</b>
+                  </h2>
+                </div>
+                <div class="col-sm-4">
+                  <button type="button" class="btn btn-info add-new">
+                    <i class="fa fa-plus"></i> Add New
+                  </button>
+                </div>
+              </div>
+            </div>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Date</th>
+                  <th>Category</th>
+                  <th>Description</th>
+                  <th>Payment Mode</th>
+                  <th>Value</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {expenses.map( (expense) => <AddExpense key={expense.id} expense={expense} /> )}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
