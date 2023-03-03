@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-const Home = () => {
-  //define variable for balance
-  const [balance, setBalance] = useState(0);
-  const [income, setIncome] = useState(0);
-  const [expense, setExpense] = useState(0);
+const Home = ({ totalIncome, totalExpense, balance}) => {
+  // //define variable for balance
+  // const [balance, setBalance] = useState(0);
+  // const [income, setIncome] = useState(0);
+  // const [expense, setExpense] = useState(0);
 
   return (
     <div>
@@ -29,14 +29,14 @@ const Home = () => {
         <div className="card" style={{ width: "18rem", marginBottom: "30px" }}>
           <div className="card-body">
             <h5 className="card-title">INCOME</h5>
-            <p className="card-text">Total Income: $ {income}</p>
+            <p className="card-text">Total Income: $ {totalIncome}</p>
           </div>
         </div>
 
         <div className="card" style={{ width: "18rem", marginBottom: "30px" }}>
           <div className="card-body">
             <h5 className="card-title">EXPENSES</h5>
-            <p className="card-text">Total Expenses: $ {expense}</p>
+            <p className="card-text">Total Expenses: $ {totalExpense}</p>
           </div>
         </div>
       </div>
