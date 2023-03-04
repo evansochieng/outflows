@@ -1,5 +1,5 @@
 import React from "react";
-import AddExpense from "./AddExpense";
+import DisplayExpense from "./DisplayExpense";
 
 function Expenses({ expenses }) {
   return (
@@ -64,7 +64,7 @@ function Expenses({ expenses }) {
                 </tr>
               </thead>
               <tbody>
-                {expenses.map( (expense) => <AddExpense key={expense.id} expense={expense} /> )}
+                {expenses.map( (expense) => <DisplayExpense key={expense.id} expense={expense} /> )}
               </tbody>
             </table>
           </div>

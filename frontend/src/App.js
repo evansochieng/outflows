@@ -36,7 +36,12 @@ function App() {
   }, []);
 
   // CREATE - Add a new expense
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+
+    // prevent form from refreshinfg
+    e.preventDefault();
+
+    // post the new expense
     fetch("http://127.0.0.1:8000/api/expenses/", {
       method: "POST",
       headers: {
@@ -48,8 +53,8 @@ function App() {
   }
 
   // UPDATE - Edit details of an expense
-  const handleUpdate = () => {
-    fetch(`http://127.0.0.1:8000/api/expenses/${id}`, {
+  const handleUpdate = (expense) => {
+    fetch(`http://127.0.0.1:8000/api/expenses/${expense.id}`, { //pass dummy expense
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -60,12 +65,16 @@ function App() {
   }
 
   // DELETE - Delete an expense
-  const handleDelete = () => {
-    fetch(`http://127.0.0.1:8000/api/expenses/${id}`, {
-      method: "DELETE"
-    }
-    .then(res => res.json())
-    .then(() => alert("Expense deleted successfully!")));
+  const handleDelete = (expense) => {
+    fetch(
+      `http://127.0.0.1:8000/api/expenses/${expense.id}`,
+      {
+        //pass dummy expense
+        method: "DELETE",
+      }
+        .then((res) => res.json())
+        .then(() => alert("Expense deleted successfully!"))
+    );
   }
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function AddExpense( { expense } ) {
+function DisplayExpense( { expense } ) {
   return (
     <tr>
     <td>{expense.name}</td>
@@ -24,4 +24,4 @@ function AddExpense( { expense } ) {
   );
 }
 
-export default AddExpense;
+export default DisplayExpense;
