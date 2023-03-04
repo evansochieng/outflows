@@ -26,6 +26,16 @@ function App() {
   );
   const balance = totalIncome - totalExpense;
 
+  // define variable for expense details when creating a new expense
+  const [expenseDetails, setExpenseDetails] = useState({
+    name: "",
+    date: "",
+    category: "",
+    description: "",
+    payment: "",
+    value: "",
+  });
+
   // CRUD Operations
   // GET - make fetch request to get expenses from django api
   useEffect(() => {
@@ -37,7 +47,6 @@ function App() {
 
   // CREATE - Add a new expense
   const handleSubmit = (e) => {
-
     // prevent form from refreshinfg
     e.preventDefault();
 
@@ -46,23 +55,26 @@ function App() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accepted": "application/json"
+        //Accepted: "application/json",
       },
-      body: JSON.stringify()
-    });
-  }
+      body: JSON.stringify(expenseDetails),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
 
   // UPDATE - Edit details of an expense
   const handleUpdate = (expense) => {
-    fetch(`http://127.0.0.1:8000/api/expenses/${expense.id}`, { //pass dummy expense
+    fetch(`http://127.0.0.1:8000/api/expenses/${expense.id}`, {
+      //pass dummy expense
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        "Accepted": "application/json"
+        Accepted: "application/json",
       },
-      body: JSON.stringify() //add what to stringify
+      body: JSON.stringify(), //add what to stringify
     });
-  }
+  };
 
   // DELETE - Delete an expense
   const handleDelete = (expense) => {
@@ -75,7 +87,7 @@ function App() {
         .then((res) => res.json())
         .then(() => alert("Expense deleted successfully!"))
     );
-  }
+  };
 
   return (
     <div className="App">
@@ -96,12 +108,26 @@ function App() {
           <Route
             exact
             path="/income"
-            element={<Income setIncomes={setIncomes} />}
+            element={
+              <Income
+                setIncomes={setIncomes}
+                handleSubmit={handleSubmit}
+                expenseDetails={expenseDetails}
+                setExpenseDetails={setExpenseDetails}
+              />
+            }
           />
           <Route
             exact
             path="/expenses"
-            element={<Expenses expenses={expenses} />}
+            element={
+              <Expenses
+                expenses={expenses}
+                handleSubmit={handleSubmit}
+                expenseDetails={expenseDetails}
+                setExpenseDetails={setExpenseDetails}
+              />
+            }
           />
           <Route
             exact
