@@ -33,8 +33,13 @@ function App() {
     category: "",
     description: "",
     payment: "",
-    value: "",
+    value: ""
   });
+
+  /////////////////////////////////////////////////////
+  ///// Create new expense popup /////
+  const [show, setShow] = useState(false);
+  ////////////////////////////////////////////////////
 
   // CRUD Operations
   // GET - make fetch request to get expenses from django api
@@ -47,7 +52,7 @@ function App() {
 
   // CREATE - Add a new expense
   const handleSubmit = (e) => {
-    // prevent form from refreshinfg
+    // prevent form from refreshing
     e.preventDefault();
 
     // post the new expense
@@ -59,8 +64,18 @@ function App() {
       },
       body: JSON.stringify(expenseDetails),
     })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((res) => res.json()) //should handle bad response
+      .then((data) => {
+        setExpenses([...expenses, data]);
+        setExpenseDetails({
+          name: "",
+          date: "",
+          category: "",
+          description: "",
+          payment: "",
+          value: ""
+        });
+      });
   };
 
   // UPDATE - Edit details of an expense
@@ -126,6 +141,8 @@ function App() {
                 handleSubmit={handleSubmit}
                 expenseDetails={expenseDetails}
                 setExpenseDetails={setExpenseDetails}
+                show={show}
+                setShow={setShow}
               />
             }
           />

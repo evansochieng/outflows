@@ -11,7 +11,7 @@ class Expense(models.Model):
     SHOPPING = 'Shopping'
     TRAVEL = 'Travel'
     MISC = 'Misc'
-    GENERAL_EXPENSE = 'GenExpense'
+    GENERAL_EXPENSE = 'General Expense'
     EDUCATION = 'Education'
 
     # create choices of the categories

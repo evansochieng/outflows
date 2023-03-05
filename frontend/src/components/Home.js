@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Home = ({ totalIncome, totalExpense, balance}) => {
   // //define variable for balance

@@ -2,7 +2,7 @@ import React from "react";
 import AddExpense from "./AddExpense";
 import DisplayExpense from "./DisplayExpense";
 
-function Expenses({ expenses, handleSubmit, expenseDetails, setExpenseDetails }) {
+function Expenses({ expenses, handleSubmit, expenseDetails, setExpenseDetails, show, setShow }) {
   return (
     <div>
       {/* <div>
@@ -49,10 +49,17 @@ function Expenses({ expenses, handleSubmit, expenseDetails, setExpenseDetails })
                   <button
                     type="button"
                     className="btn btn-info add-new"
-                    onClick={() => console.log("Hi")}
+                    onClick={() => setShow(true)}
                   >
                     <i className="fa fa-plus"></i> Add New
                   </button>
+                  <AddExpense
+                    handleSubmit={handleSubmit}
+                    expenseDetails={expenseDetails}
+                    setExpenseDetails={setExpenseDetails}
+                    show={show}
+                    setShow={setShow}
+                  />
                 </div>
               </div>
             </div>
