@@ -2,39 +2,9 @@ import React from "react";
 import AddExpense from "./AddExpense";
 import DisplayExpense from "./DisplayExpense";
 
-function Expenses({ expenses, handleSubmit, expenseDetails, setExpenseDetails, show, setShow }) {
+function Expenses({ expenses, handleSubmit, expenseDetails, setExpenseDetails, show, setShow, expEditPopup, setExpEditPopup, handleUpdate, handleDelete, expDeletePopup, setExpDeletePopup }) {
   return (
     <div>
-      {/* <div>
-        <div
-          className="card"
-          style={{ width: "60rem", marginBottom: "30px", marginTop: "30px" }}
-        >
-          <div className="card-body">
-            <div
-              style={{
-                display: "inline-block",
-                justifyContent: "space-between",
-              }}
-            >
-              <h5
-                className="card-title"
-                style={{ color: "#0d6efd", float: "left" }}
-              >
-                Expenses
-              </h5>
-              <button
-                type="button"
-                className="btn btn-outline-primary"
-                style={{ float: "right" }}
-              >
-                NEW EXPENSE
-              </button>
-            </div>
-            <p className="card-text">Total Expenses: $ {0}</p>
-          </div>
-        </div>
-      </div> */}
       <div className="container-lg">
         <div className="table-responsive">
           <div className="table-wrapper">
@@ -77,7 +47,18 @@ function Expenses({ expenses, handleSubmit, expenseDetails, setExpenseDetails, s
               </thead>
               <tbody>
                 {expenses.map((expense) => (
-                  <DisplayExpense key={expense.id} expense={expense} />
+                  <DisplayExpense
+                    key={expense.id}
+                    expense={expense}
+                    expenseDetails={expenseDetails}
+                    setExpenseDetails={setExpenseDetails}
+                    expEditPopup={expEditPopup}
+                    setExpEditPopup={setExpEditPopup}
+                    handleUpdate={handleUpdate}
+                    handleDelete={handleDelete}
+                    expDeletePopup={expDeletePopup}
+                    setExpDeletePopup={setExpDeletePopup}
+                  />
                 ))}
               </tbody>
             </table>

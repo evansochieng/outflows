@@ -28,6 +28,7 @@ function App() {
 
   // define variable for expense details when creating a new expense
   const [expenseDetails, setExpenseDetails] = useState({
+    id: "",
     name: "",
     date: "",
     category: "",
@@ -39,6 +40,12 @@ function App() {
   /////////////////////////////////////////////////////
   ///// Create new expense popup /////
   const [show, setShow] = useState(false);
+
+  ///// Edit expense popup /////
+  const [expEditPopup, setExpEditPopup] = useState(false);
+
+  ///// Delete expense popup /////
+  const [expDeletePopup, setExpDeletePopup] = useState(false);
   ////////////////////////////////////////////////////
 
   // CRUD Operations
@@ -66,8 +73,10 @@ function App() {
     })
       .then((res) => res.json()) //should handle bad response
       .then((data) => {
+        console.log(data)
         setExpenses([...expenses, data]);
         setExpenseDetails({
+          id: "",
           name: "",
           date: "",
           category: "",
@@ -79,7 +88,11 @@ function App() {
   };
 
   // UPDATE - Edit details of an expense
-  const handleUpdate = (expense) => {
+  const handleUpdate = (e, expense) => {
+    console.log(expense)
+    // prevent form from refreshing
+    e.preventDefault();
+
     fetch(`http://127.0.0.1:8000/api/expenses/${expense.id}`, {
       //pass dummy expense
       method: "PATCH",
@@ -87,21 +100,20 @@ function App() {
         "Content-Type": "application/json",
         Accepted: "application/json",
       },
-      body: JSON.stringify(), //add what to stringify
-    });
+      body: JSON.stringify(expense) //add what to stringify
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
 
   // DELETE - Delete an expense
   const handleDelete = (expense) => {
-    fetch(
-      `http://127.0.0.1:8000/api/expenses/${expense.id}`,
-      {
-        //pass dummy expense
-        method: "DELETE",
-      }
-        .then((res) => res.json())
-        .then(() => alert("Expense deleted successfully!"))
-    );
+    console.log(expense)
+    fetch(`http://127.0.0.1:8000/api/expenses/${expense.id}`, {
+      //pass dummy expense
+      method: "DELETE",
+      "Content-Type": "application/json",
+    })
   };
 
   return (
@@ -143,6 +155,12 @@ function App() {
                 setExpenseDetails={setExpenseDetails}
                 show={show}
                 setShow={setShow}
+                expEditPopup={expEditPopup}
+                setExpEditPopup={setExpEditPopup}
+                handleUpdate={handleUpdate}
+                handleDelete={handleDelete}
+                expDeletePopup={expDeletePopup}
+                setExpDeletePopup={setExpDeletePopup}
               />
             }
           />

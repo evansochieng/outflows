@@ -71,7 +71,7 @@ const AddExpense = ({ handleSubmit, expenseDetails, setExpenseDetails, show, set
                   <option>Education</option>
                   <option>General Expense</option>
                   <option>Travel</option>
-                  <option>MISC</option>
+                  <option>Misc</option>
                 </select>
               </div>
 
