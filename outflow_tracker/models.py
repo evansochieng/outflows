@@ -41,3 +41,25 @@ class Expense(models.Model):
     # default attribute to be displayed
     def __str__(self):
         return self.name
+    
+
+# Create a model for incomes
+class Income(models.Model):
+
+    # subclass to define choices in a concise way income categories
+    class IncomeSource(models.TextChoices):
+        SALARY = 'Salary', _('Salary')
+        ONLINE_WRITING = 'Online Writing', _('Online Writing')
+        BUSINESS = 'Business', _('Business')
+        INVESTMENTS = 'Investments', _('Investments')
+        GOODWILL = 'Goodwill', _('Goodwill')
+
+    # define the attributes of the model
+    name = models.CharField(max_length=100)
+    date = models.DateField()
+    source = models.CharField(max_length=20, choices=IncomeSource.choices, default=IncomeSource.ONLINE_WRITING)
+    amount = models.IntegerField()
+
+    # default attribute to be displayed
+    def __str__(self):
+        return self.name
