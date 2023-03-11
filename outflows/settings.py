@@ -129,6 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Django-cors-headers is an HTTP-header-based that allows a server to indicate 
 # any other origins to your Django application
 # We install djangorestframework django-cors-headers and add them to installed apps
+# This will be for frontend
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
 ]
