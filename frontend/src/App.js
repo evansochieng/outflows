@@ -17,7 +17,7 @@ function App() {
 
   // define variables for total income, total expenses, and balance
   const totalIncome = incomes.reduce(
-    (initTotalIncome, curIncome) => initTotalIncome + curIncome.value,
+    (initTotalIncome, curIncome) => initTotalIncome + curIncome.amount,
     0
   );
   const totalExpense = expenses.reduce(
@@ -26,6 +26,7 @@ function App() {
   );
   const balance = totalIncome - totalExpense;
 
+  ////////////////////////// EXPENSES OPERATION ///////////////////////////////
   // define variable for expense details when creating a new expense
   const [expenseDetails, setExpenseDetails] = useState({
     id: "",
@@ -34,10 +35,10 @@ function App() {
     category: "",
     description: "",
     payment: "",
-    value: ""
+    value: "",
   });
 
-  /////////////////////////////////////////////////////
+  /////////////
   ///// Create new expense popup /////
   const [show, setShow] = useState(false);
 
@@ -46,9 +47,9 @@ function App() {
 
   ///// Delete expense popup /////
   const [expDeletePopup, setExpDeletePopup] = useState(false);
-  ////////////////////////////////////////////////////
+  /////////////
 
-  // CRUD Operations
+  // Expense CRUD Operations
   // GET - make fetch request to get expenses from django api
   useEffect(() => {
     fetch("http://127.0.0.1:8000/api/expenses/")
@@ -73,7 +74,7 @@ function App() {
     })
       .then((res) => res.json()) //should handle bad response
       .then((data) => {
-        console.log(data)
+        console.log(data);
         setExpenses([...expenses, data]);
         setExpenseDetails({
           id: "",
@@ -82,14 +83,14 @@ function App() {
           category: "",
           description: "",
           payment: "",
-          value: ""
+          value: "",
         });
       });
   };
 
   // UPDATE - Edit details of an expense
   const handleUpdate = (e, expense) => {
-    console.log(expense)
+    console.log(expense);
     // prevent form from refreshing
     e.preventDefault();
 
@@ -100,7 +101,7 @@ function App() {
         "Content-Type": "application/json",
         Accepted: "application/json",
       },
-      body: JSON.stringify(expense) //add what to stringify
+      body: JSON.stringify(expense), //add what to stringify
     })
       .then((res) => res.json())
       .then((data) => console.log(data));
@@ -108,13 +109,48 @@ function App() {
 
   // DELETE - Delete an expense
   const handleDelete = (expense) => {
-    console.log(expense)
+    console.log(expense);
     fetch(`http://127.0.0.1:8000/api/expenses/${expense.id}`, {
       //pass dummy expense
       method: "DELETE",
       "Content-Type": "application/json",
-    })
+    });
   };
+  ////////////////// END OF EXPENSE OPERATIONS /////////////////////
+
+  ///////////////////// INCOME OPERATIONS //////////////////////////////
+  // define variable for expense details when creating a new expense
+  const [incomeDetails, setIncomeDetails] = useState({
+    id: "",
+    name: "",
+    date: "",
+    description: "",
+    amount: "",
+  });
+
+  /////////////
+  ///// Create new expense popup /////
+  const [showIncome, setShowIncome] = useState(false);
+
+  ///// Edit expense popup /////
+  const [incEditPopup, setIncEditPopup] = useState(false);
+
+  ///// Delete expense popup /////
+  const [incDeletePopup, setIncDeletePopup] = useState(false);
+  /////////////
+
+  // Expense CRUD Operations
+  // GET - make fetch request to get expenses from django api
+  useEffect( () => {
+    fetch("http://127.0.0.1:8000/api/incomes/")
+    .then((res) => res.json())
+    .then(data => {
+      setIncomes(data);
+    })
+    .then(err => console.log(err));
+  }, []);
+
+  ///////////////////// END OF INCOME OPERATIONS ///////////////////////
 
   return (
     <div className="App">
