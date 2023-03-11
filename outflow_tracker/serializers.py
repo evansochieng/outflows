@@ -13,4 +13,4 @@ class ExpenseSerializer(serializers.ModelSerializer):
 class IncomeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Income
-        fileds = ('id', 'name', 'date', 'description', 'amount')
+        fields = ('id', 'name', 'date', 'description', 'amount')

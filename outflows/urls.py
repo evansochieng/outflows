@@ -20,7 +20,11 @@ from outflow_tracker import views
 
 # define router
 router = routers.DefaultRouter()
+
+# add routes for expenses
 router.register(r'expenses', views.ExpenseView, 'expense')
+# add routes for income
+router.register(r'incomes', views.IncomeView, 'income')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
