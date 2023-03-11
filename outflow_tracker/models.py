@@ -58,6 +58,7 @@ class Income(models.Model):
     name = models.CharField(max_length=100)
     date = models.DateField()
     source = models.CharField(max_length=20, choices=IncomeSource.choices, default=IncomeSource.ONLINE_WRITING)
+    description = models.TextField()
     amount = models.IntegerField()
 
     # default attribute to be displayed

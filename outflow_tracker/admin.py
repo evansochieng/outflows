@@ -10,7 +10,7 @@ class ExpenseAdmin(admin.ModelAdmin):
 # add the income model to the admin page
 class IncomeAdmin(admin.ModelAdmin):
     # list of attrinutes
-    list = ('name', 'date', 'source', 'amount')
+    list = ('name', 'date', 'source', 'description', 'amount')
 
 # register the site
 admin.site.register(Expense, ExpenseAdmin)
