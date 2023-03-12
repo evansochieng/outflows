@@ -1,15 +1,10 @@
 import React from "react";
-import AddExpense from "./AddExpense";
 
-function Income( {handleSubmit, expenseDetails, setExpenseDetails} ) {
+function Income( {incomes, setIncomes, showIncome, setShowIncome, incEditPopup, setIncEditPopup, incDeletePopup, setIncDeletePopup, handleIncomeSubmit, incomeDetails, setIncomeDetails} ) {
 
   return (
     <div>
-      <AddExpense
-        handleSubmit={handleSubmit}
-        expenseDetails={expenseDetails}
-        setExpenseDetails={setExpenseDetails}
-      />
+      
     </div>
   );
 }
