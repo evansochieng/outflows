@@ -29,7 +29,6 @@ function App() {
   ////////////////////////// EXPENSES OPERATION ///////////////////////////////
   // define variable for expense details when creating a new expense
   const [expenseDetails, setExpenseDetails] = useState({
-    id: "",
     name: "",
     date: "",
     category: "",
@@ -77,7 +76,6 @@ function App() {
         console.log(data);
         setExpenses([...expenses, data]);
         setExpenseDetails({
-          id: "",
           name: "",
           date: "",
           category: "",
@@ -119,9 +117,8 @@ function App() {
   ////////////////// END OF EXPENSE OPERATIONS /////////////////////
 
   ///////////////////// INCOME OPERATIONS //////////////////////////////
-  // define variable for expense details when creating a new expense
+  // define variable for income details when creating a new income
   const [incomeDetails, setIncomeDetails] = useState({
-    id: "",
     name: "",
     date: "",
     description: "",
@@ -129,26 +126,61 @@ function App() {
   });
 
   /////////////
-  ///// Create new expense popup /////
+  ///// Create new income popup /////
   const [showIncome, setShowIncome] = useState(false);
 
-  ///// Edit expense popup /////
+  ///// Edit income popup /////
   const [incEditPopup, setIncEditPopup] = useState(false);
 
-  ///// Delete expense popup /////
+  ///// Delete income popup /////
   const [incDeletePopup, setIncDeletePopup] = useState(false);
   /////////////
 
-  // Expense CRUD Operations
-  // GET - make fetch request to get expenses from django api
-  useEffect( () => {
+  // Income CRUD Operations
+  // GET - make fetch request to get incomes from django api
+  useEffect(() => {
     fetch("http://127.0.0.1:8000/api/incomes/")
-    .then((res) => res.json())
-    .then(data => {
-      setIncomes(data);
-    })
-    .then(err => console.log(err));
+      .then((res) => res.json())
+      .then((data) => {
+        setIncomes(data);
+      })
+      .catch((err) => console.log(err));
   }, []);
+
+  // CREATE - Add a new income
+  const handleIncomeSubmit = (e) => {
+    // prevent form from refreshing
+    e.preventDefault();
+
+    // post the new expense
+    fetch("http://127.0.0.1:8000/api/incomes/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        //Accepted: "application/json",
+      },
+      body: JSON.stringify(incomeDetails),
+    })
+      .then((res) => {
+        // check if the response is okay
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("Network response was not ok");
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        setIncomes([...incomes, data]);
+        setIncomeDetails({
+          name: "",
+          date: "",
+          description: "",
+          amount: "",
+        });
+      })
+      .then( error => console.error('Error posting data', error));
+  };
 
   ///////////////////// END OF INCOME OPERATIONS ///////////////////////
 
@@ -173,10 +205,17 @@ function App() {
             path="/income"
             element={
               <Income
+                incomes={incomes}
                 setIncomes={setIncomes}
-                handleSubmit={handleSubmit}
-                expenseDetails={expenseDetails}
-                setExpenseDetails={setExpenseDetails}
+                handleIncomeSubmit={handleIncomeSubmit}
+                incomeDetails={incomeDetails}
+                setIncomeDetails={setIncomeDetails}
+                showIncome={showIncome}
+                setShowIncome={setShowIncome}
+                incEditPopup={incEditPopup}
+                setIncEditPopup={setIncEditPopup}
+                incDeletePopup={incDeletePopup}
+                setIncDeletePopup={setIncDeletePopup}
               />
             }
           />

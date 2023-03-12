@@ -23,7 +23,6 @@ const EditExpense = ({
   const handleClose = () => {
     setExpEditPopup(false);
     setExpenseDetails({
-      id: "",
       name: "",
       date: "",
       category: "",

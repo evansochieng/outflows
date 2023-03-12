@@ -1,10 +1,6 @@
 import React from "react";
 
 const Home = ({ totalIncome, totalExpense, balance}) => {
-  // //define variable for balance
-  // const [balance, setBalance] = useState(0);
-  // const [income, setIncome] = useState(0);
-  // const [expense, setExpense] = useState(0);
 
   return (
     <div>
