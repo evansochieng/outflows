@@ -6,7 +6,7 @@ function DisplayExpense({ expense, expenseDetails, setExpenseDetails, expEditPop
   // define a function to handleEditClick and set details to clicked expense
   const handleEditClick = () => {
     setExpEditPopup(true);
-    setExpenseDetails({...expense});
+    setExpenseDetails({...expenseDetails, ...expense});
     console.log(expenseDetails)
     console.log(expense);
   };

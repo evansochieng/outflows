@@ -87,17 +87,19 @@ function App() {
   };
 
   // UPDATE - Edit details of an expense
-  const handleUpdate = (e, expense) => {
+  const handleUpdate = (expense) => {
     console.log(expense);
+    //console.log(e);
+    console.log(`http://127.0.0.1:8000/api/expenses/${expense.id}/`);
     // prevent form from refreshing
-    e.preventDefault();
+    //e.preventDefault();
 
-    fetch(`http://127.0.0.1:8000/api/expenses/${expense.id}`, {
+    fetch(`http://127.0.0.1:8000/api/expenses/${expense.id}/`, {
       //pass dummy expense
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        Accepted: "application/json",
+        // Accepted: "application/json",
       },
       body: JSON.stringify(expense), //add what to stringify
     })
@@ -111,7 +113,7 @@ function App() {
     fetch(`http://127.0.0.1:8000/api/expenses/${expense.id}`, {
       //pass dummy expense
       method: "DELETE",
-      "Content-Type": "application/json",
+      // "Content-Type": "application/json",
     });
   };
   ////////////////// END OF EXPENSE OPERATIONS /////////////////////

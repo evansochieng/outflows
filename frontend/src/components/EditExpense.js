@@ -147,7 +147,7 @@ const EditExpense = ({
           <Button
             variant="primary"
             type="submit"
-            onClick={(e, expenseDetails) => handleUpdate(e, expenseDetails)}
+            onClick={() => handleUpdate(expenseDetails)}
           >
             SAVE CHANGES
           </Button>
