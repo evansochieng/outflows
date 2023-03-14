@@ -6,9 +6,13 @@ function DisplayExpense({ expense, expenseDetails, setExpenseDetails, expEditPop
   // define a function to handleEditClick and set details to clicked expense
   const handleEditClick = () => {
     setExpEditPopup(true);
-    setExpenseDetails({...expenseDetails, ...expense});
-    console.log(expenseDetails)
-    console.log(expense);
+    setExpenseDetails({ ...expenseDetails, ...expense });
+  };
+
+  // define a function to handleEditClick and set details to clicked expense
+  const handleDeleteClick = () => {
+    setExpDeletePopup(true);
+    setExpenseDetails({ ...expenseDetails, ...expense });
   };
 
   return (
@@ -38,10 +42,12 @@ function DisplayExpense({ expense, expenseDetails, setExpenseDetails, expEditPop
         />
 
         <a className="delete" title="Delete" data-toggle="tooltip">
-          <i className="material-icons" onClick={() => setExpDeletePopup(true)}>
+          <i className="material-icons" onClick={() => handleDeleteClick()}>
             &#xE872;
           </i>
+          {/* Display the Delete popup here */}
           <DeleteExpense
+            expenseDetails={expenseDetails}
             expDeletePopup={expDeletePopup}
             setExpDeletePopup={setExpDeletePopup}
             handleDelete={handleDelete}

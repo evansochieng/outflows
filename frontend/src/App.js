@@ -73,7 +73,6 @@ function App() {
     })
       .then((res) => res.json()) //should handle bad response
       .then((data) => {
-        console.log(data);
         setExpenses([...expenses, data]);
         setExpenseDetails({
           name: "",
@@ -88,11 +87,6 @@ function App() {
 
   // UPDATE - Edit details of an expense
   const handleUpdate = (expense) => {
-    console.log(expense);
-    //console.log(e);
-    console.log(`http://127.0.0.1:8000/api/expenses/${expense.id}/`);
-    // prevent form from refreshing
-    //e.preventDefault();
 
     fetch(`http://127.0.0.1:8000/api/expenses/${expense.id}/`, {
       //pass dummy expense
