@@ -117,6 +117,7 @@ function App() {
   const [incomeDetails, setIncomeDetails] = useState({
     name: "",
     date: "",
+    source: "",
     description: "",
     amount: "",
   });
@@ -157,25 +158,26 @@ function App() {
       },
       body: JSON.stringify(incomeDetails),
     })
-      .then((res) => {
-        // check if the response is okay
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error("Network response was not ok");
-        }
-      })
-      .then((data) => {
-        console.log(data);
-        setIncomes([...incomes, data]);
-        setIncomeDetails({
-          name: "",
-          date: "",
-          description: "",
-          amount: "",
-        });
-      })
-      .then( error => console.error('Error posting data', error));
+    .then( (res) => res.json())
+      // .then((res) => {
+      //   // check if the response is okay
+      //   if (res.ok) {
+      //     return res.json();
+      //   } else {
+      //     throw new Error("Network response was not ok");
+      //   }
+      // })
+    .then((data) => {
+      setIncomes([...incomes, data]);
+      setIncomeDetails({
+        name: "",
+        date: "",
+        source: "",
+        description: "",
+        amount: "",
+      });
+    })
+    .catch( error => console.error('Error posting data', error));
   };
 
   ///////////////////// END OF INCOME OPERATIONS ///////////////////////
@@ -202,7 +204,6 @@ function App() {
             element={
               <Income
                 incomes={incomes}
-                setIncomes={setIncomes}
                 handleIncomeSubmit={handleIncomeSubmit}
                 incomeDetails={incomeDetails}
                 setIncomeDetails={setIncomeDetails}
