@@ -194,6 +194,15 @@ function App() {
       .then((data) => console.log(data));
   };
 
+  // DELETE - Delete an income
+  const handleIncomeDelete = (income) => {
+    console.log(income);
+    fetch(`http://127.0.0.1:8000/api/incomes/${income.id}`, {
+      method: "DELETE",
+      // "Content-Type": "application/json",
+    });
+  };
+
   ///////////////////// END OF INCOME OPERATIONS ///////////////////////
 
   return (
@@ -228,6 +237,7 @@ function App() {
                 incDeletePopup={incDeletePopup}
                 setIncDeletePopup={setIncDeletePopup}
                 handleIncomeUpdate={handleIncomeUpdate}
+                handleIncomeDelete={handleIncomeDelete}
               />
             }
           />

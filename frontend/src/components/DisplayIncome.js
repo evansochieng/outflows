@@ -1,5 +1,6 @@
 import React from 'react';
 import EditIncome from './EditIncome';
+import DeleteIncome from './DeleteIncome';
 
 const DisplayIncome = ({
   income,
@@ -8,7 +9,7 @@ const DisplayIncome = ({
   incEditPopup,
   setIncEditPopup,
   handleIncomeUpdate,
-//   handleIncomeDelete,
+  handleIncomeDelete,
   incDeletePopup,
   setIncDeletePopup,
 }) => {
@@ -54,12 +55,12 @@ const DisplayIncome = ({
             &#xE872;
           </i>
           {/* Display the Delete popup here */}
-          {/* <DeleteIncome
+          <DeleteIncome
             incomeDetails={incomeDetails}
             incDeletePopup={incDeletePopup}
             setIncDeletePopup={setIncDeletePopup}
             handleIncomeDelete={handleIncomeDelete}
-          /> */}
+          />
         </a>
       </td>
     </tr>
