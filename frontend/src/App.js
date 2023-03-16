@@ -87,7 +87,6 @@ function App() {
 
   // UPDATE - Edit details of an expense
   const handleUpdate = (expense) => {
-
     fetch(`http://127.0.0.1:8000/api/expenses/${expense.id}/`, {
       //pass dummy expense
       method: "PATCH",
@@ -158,7 +157,7 @@ function App() {
       },
       body: JSON.stringify(incomeDetails),
     })
-    .then( (res) => res.json())
+      .then((res) => res.json())
       // .then((res) => {
       //   // check if the response is okay
       //   if (res.ok) {
@@ -167,17 +166,32 @@ function App() {
       //     throw new Error("Network response was not ok");
       //   }
       // })
-    .then((data) => {
-      setIncomes([...incomes, data]);
-      setIncomeDetails({
-        name: "",
-        date: "",
-        source: "",
-        description: "",
-        amount: "",
-      });
+      .then((data) => {
+        setIncomes([...incomes, data]);
+        setIncomeDetails({
+          name: "",
+          date: "",
+          source: "",
+          description: "",
+          amount: "",
+        });
+      })
+      .catch((error) => console.error("Error posting data", error));
+  };
+
+  // UPDATE - Edit details of an income
+  const handleIncomeUpdate = (income) => {
+    fetch(`http://127.0.0.1:8000/api/incomes/${income.id}/`, {
+      //pass dummy income
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        // Accepted: "application/json",
+      },
+      body: JSON.stringify(income), //add what to stringify
     })
-    .catch( error => console.error('Error posting data', error));
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
 
   ///////////////////// END OF INCOME OPERATIONS ///////////////////////
@@ -213,6 +227,7 @@ function App() {
                 setIncEditPopup={setIncEditPopup}
                 incDeletePopup={incDeletePopup}
                 setIncDeletePopup={setIncDeletePopup}
+                handleIncomeUpdate={handleIncomeUpdate}
               />
             }
           />

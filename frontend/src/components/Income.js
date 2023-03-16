@@ -2,7 +2,7 @@ import React from "react";
 import AddIncome from "./AddIncome";
 import DisplayIncome from "./DisplayIncome";
 
-function Income( {incomes, showIncome, setShowIncome, incEditPopup, setIncEditPopup, incDeletePopup, setIncDeletePopup, handleIncomeSubmit, incomeDetails, setIncomeDetails} ) {
+function Income( {incomes, showIncome, setShowIncome, incEditPopup, setIncEditPopup, incDeletePopup, setIncDeletePopup, handleIncomeSubmit, incomeDetails, setIncomeDetails, handleIncomeUpdate} ) {
 
   return (
     <div>
@@ -54,7 +54,7 @@ function Income( {incomes, showIncome, setShowIncome, incEditPopup, setIncEditPo
                     setIncomeDetails={setIncomeDetails}
                     incEditPopup={incEditPopup}
                     setIncEditPopup={setIncEditPopup}
-                    // handleUpdate={handleUpdate}
+                    handleIncomeUpdate={handleIncomeUpdate}
                     // handleDelete={handleDelete}
                     incDeletePopup={incDeletePopup}
                     setIncDeletePopup={setIncDeletePopup}

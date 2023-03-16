@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import EditIncome from './EditIncome';
 
 const DisplayIncome = ({
   income,
@@ -6,7 +7,7 @@ const DisplayIncome = ({
   setIncomeDetails,
   incEditPopup,
   setIncEditPopup,
-//   handleIncomeUpdate,
+  handleIncomeUpdate,
 //   handleIncomeDelete,
   incDeletePopup,
   setIncDeletePopup,
@@ -40,13 +41,13 @@ const DisplayIncome = ({
           </i>
         </a>
         {/* Display the Edit popup here */}
-        {/* <EditIncome
+        <EditIncome
           incomeDetails={incomeDetails}
           setIncomeDetails={setIncomeDetails}
           incEditPopup={incEditPopup}
           setIncEditPopup={setIncEditPopup}
           handleIncomeUpdate={handleIncomeUpdate}
-        /> */}
+        />
 
         <a className="delete" title="Delete" data-toggle="tooltip">
           <i className="material-icons" onClick={() => handleDeleteClick()}>
