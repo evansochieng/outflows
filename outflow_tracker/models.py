@@ -35,7 +35,7 @@ class Expense(models.Model):
     date = models.DateField()
     category = models.CharField(max_length=100, choices=EXPENSE_CATEGORY_CHOICES, default=SHOPPING)
     description = models.TextField()
-    payment_mode = models.CharField(max_length=20, choices=PaymentMode.choices, default=PaymentMode.CASH)
+    payment = models.CharField(max_length=20, choices=PaymentMode.choices, default=PaymentMode.CASH)
     value = models.IntegerField()
 
     # default attribute to be displayed

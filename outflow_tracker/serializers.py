@@ -6,7 +6,7 @@ from .models import Income
 class ExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Expense
-        fields = ('id', 'name', 'date', 'category', 'description', 'payment_mode', 'value')
+        fields = ('id', 'name', 'date', 'category', 'description', 'payment', 'value')
 
 # create a class to convert Income model to JSON and vice versa
 # this determines the attributes that are returned when get request is made

@@ -106,17 +106,17 @@ const EditExpense = ({
               </div>
 
               <div className="form-outline mb-4">
-                <label className="form-label" htmlFor="payment-mode">
+                <label className="form-label" htmlFor="payment">
                   Payment Mode
                 </label>
                 <select
                   className="form-select"
                   aria-label="Default select example"
-                  name="payment-mode"
+                  name="payment"
                   value={expenseDetails.payment}
                   onChange={(e) => handleChange(e)}
                 >
-                  <option defaultValue>Cash</option>
+                  <option>Cash</option>
                   <option>Mpesa</option>
                   <option>Card</option>
                   <option>Cheque</option>
