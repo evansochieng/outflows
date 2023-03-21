@@ -167,6 +167,7 @@ function App() {
       //   }
       // })
       .then((data) => {
+        console.log(data)
         setIncomes([...incomes, data]);
         setIncomeDetails({
           name: "",
