@@ -216,6 +216,8 @@ function App() {
             path="/home"
             element={
               <Home
+                expenses={expenses}
+                incomes={incomes}
                 totalIncome={totalIncome}
                 totalExpense={totalExpense}
                 balance={balance}

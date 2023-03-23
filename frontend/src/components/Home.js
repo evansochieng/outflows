@@ -1,6 +1,55 @@
 import React from "react";
+import { Bar, Line, Pie } from "react-chartjs-2";
 
-const Home = ({ totalIncome, totalExpense, balance}) => {
+//import and register all elements since chart js is treeshakable
+import { Chart, ArcElement } from "chart.js";
+Chart.register(ArcElement);
+
+const Home = ({ totalIncome, totalExpense, balance, incomes, expenses}) => {
+
+  // define a n object to store the frequencies of expense categories
+  const freqExpensesObject = {}
+  expenses.forEach( exp => {
+    // create a key for each category and value with the number of its occurence
+    freqExpensesObject.hasOwnProperty(exp.category)
+      ? (freqExpensesObject[exp.category] += 1)
+      : (freqExpensesObject[exp.category] = 1);
+  });
+
+  ////// Visualizations with Chart JS //////
+  ////// Draw a pie chart for the expense categories ////////
+  const data = {
+    labels: Object.keys(freqExpensesObject),
+    datasets: [
+      {
+        data: Object.values(freqExpensesObject),
+        backgroundColor: [
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56",
+          "rgba(75,192,192,0.4)",
+        ],
+        hoverBackgroundColor: [
+          "#FF6384",
+          "#36A2EB",
+          "#FFCE56",
+          "rgba(75,192,192,1)",
+        ],
+      },
+    ],
+  };
+
+  const options = {
+    title: {
+      display: true,
+      text: "Pie Chart of Expense Categories",
+      fontSize: 16,
+    },
+    legend: {
+      display: true,
+      position: "bottom",
+    },
+  };
 
   return (
     <div>
@@ -35,6 +84,11 @@ const Home = ({ totalIncome, totalExpense, balance}) => {
             <p className="card-text">Total Expenses: $ {totalExpense}</p>
           </div>
         </div>
+      </div>
+
+      <div>
+        <h2>Pie Example</h2>
+        <Pie data={data} options={options} />
       </div>
     </div>
   );
