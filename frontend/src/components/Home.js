@@ -76,6 +76,9 @@ const Home = ({ totalIncome, totalExpense, balance, incomes, expenses}) => {
           padding: "10px",
         }}
       >
+        <div>
+          <h2>Summary of Money Flow</h2>
+        </div>
         <div className="card" style={{ width: "18rem", marginBottom: "30px" }}>
           <div className="card-body">
             <h5 className="card-title">MY BALANCE</h5>
