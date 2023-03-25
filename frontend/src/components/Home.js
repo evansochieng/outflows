@@ -1,9 +1,9 @@
 import React from "react";
-import { Bar, Line, Pie } from "react-chartjs-2";
+import { Bar, Line, Pie, Doughnut } from "react-chartjs-2";
 
 //import and register all elements since chart js is treeshakable
-import { Chart, ArcElement } from "chart.js";
-Chart.register(ArcElement);
+import { Chart, registerables } from "chart.js";
+Chart.register(...registerables);
 
 const Home = ({ totalIncome, totalExpense, balance, incomes, expenses}) => {
 
@@ -18,11 +18,18 @@ const Home = ({ totalIncome, totalExpense, balance, incomes, expenses}) => {
 
   ////// Visualizations with Chart JS //////
   ////// Draw a pie chart for the expense categories ////////
-  const data = {
-    labels: Object.keys(freqExpensesObject),
+
+  //define the data
+  let data = Object.values(freqExpensesObject);
+  // create custom labels
+  let labels = Object.keys(freqExpensesObject);
+  let customLabels = labels.map((label, index) => `${label}: ${data[index]}`);
+
+  const chartdata = {
+    labels: customLabels,
     datasets: [
       {
-        data: Object.values(freqExpensesObject),
+        data: data,
         backgroundColor: [
           "#FF6384",
           "#36A2EB",
@@ -47,7 +54,12 @@ const Home = ({ totalIncome, totalExpense, balance, incomes, expenses}) => {
     },
     legend: {
       display: true,
-      position: "bottom",
+      position: "right",
+    },
+
+    datalabels: {
+      display: true,
+      color: "white",
     },
   };
 
@@ -86,9 +98,9 @@ const Home = ({ totalIncome, totalExpense, balance, incomes, expenses}) => {
         </div>
       </div>
 
-      <div>
-        <h2>Pie Example</h2>
-        <Pie data={data} options={options} />
+      <div style={{ maxWidth: "800px", maxHeight: "600px" }}>
+        <h2>Pie Chart of Expenses</h2>
+        <Doughnut data={chartdata} options={options} />
       </div>
     </div>
   );
