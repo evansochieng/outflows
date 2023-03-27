@@ -1,5 +1,5 @@
 import React from "react";
-import { Bar, Line, Doughnut } from "react-chartjs-2";
+import { Bar, Doughnut } from "react-chartjs-2";
 
 //import and register all elements since chart js is treeshakable
 import { Chart, registerables } from "chart.js";
@@ -119,7 +119,7 @@ const Home = ({ totalIncome, totalExpense, balance, incomes, expenses}) => {
           flexDirection: "column",
           height: "100vh",
           borderRadius: "10px",
-          padding: "10px",
+          //padding: "10px",
         }}
       >
         <div>
@@ -139,7 +139,7 @@ const Home = ({ totalIncome, totalExpense, balance, incomes, expenses}) => {
           </div>
         </div>
 
-        <div className="card" style={{ width: "18rem", marginBottom: "30px" }}>
+        <div className="card" style={{ width: "18rem", marginBottom: "10px" }}>
           <div className="card-body">
             <h5 className="card-title">EXPENSES</h5>
             <p className="card-text">Total Expenses: $ {totalExpense}</p>
