@@ -21,7 +21,7 @@ function DisplayExpense({ expense, expenseDetails, setExpenseDetails, expEditPop
       <td>{expense.date}</td>
       <td>{expense.category}</td>
       <td>{expense.description}</td>
-      <td>{expense.payment_mode}</td>
+      <td>{expense.payment}</td>
       <td>{expense.value}</td>
       <td>
         <a className="add" title="Add" data-toggle="tooltip">

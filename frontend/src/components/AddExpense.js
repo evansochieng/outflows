@@ -130,7 +130,10 @@ const AddExpense = ({ handleSubmit, expenseDetails, setExpenseDetails, show, set
           <Button
             variant="primary"
             type="submit"
-            onClick={(e) => handleSubmit(e)}
+            onClick={(e) => {
+              handleSubmit(e);
+              setShow(false);
+            }}
           >
             SAVE
           </Button>

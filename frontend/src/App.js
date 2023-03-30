@@ -59,6 +59,7 @@ function App() {
 
   // CREATE - Add a new expense
   const handleSubmit = (e) => {
+    console.log(expenseDetails)
     // prevent form from refreshing
     e.preventDefault();
 

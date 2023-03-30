@@ -147,7 +147,18 @@ const EditExpense = ({
           <Button
             variant="primary"
             type="submit"
-            onClick={() => handleUpdate(expenseDetails)}
+            onClick={() => {
+              handleUpdate(expenseDetails);
+              setExpenseDetails({
+                name: "",
+                date: "",
+                category: "",
+                description: "",
+                payment: "",
+                value: "",
+              });
+              setExpEditPopup(false);
+            }}
           >
             SAVE CHANGES
           </Button>

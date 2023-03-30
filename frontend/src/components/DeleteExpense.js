@@ -22,7 +22,10 @@ function DeleteExpense({expenseDetails, handleDelete, expDeletePopup, setExpDele
           <Button variant="secondary" onClick={handleClose}>
             CLOSE
           </Button>
-          <Button variant="primary" onClick={() => handleDelete(expenseDetails)}>
+          <Button variant="primary" onClick={() => {
+            handleDelete(expenseDetails);
+            setExpDeletePopup(false)
+          }}>
             DELETE EXPENSE
           </Button>
         </Modal.Footer>
