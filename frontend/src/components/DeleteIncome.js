@@ -23,7 +23,10 @@ function DeleteIncome({incomeDetails, handleIncomeDelete, incDeletePopup, setInc
           </Button>
           <Button
             variant="primary"
-            onClick={() => handleIncomeDelete(incomeDetails)}
+            onClick={() => {
+              handleIncomeDelete(incomeDetails)
+               setIncDeletePopup(false);
+            }}
           >
             DELETE INCOME
           </Button>

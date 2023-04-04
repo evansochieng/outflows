@@ -118,7 +118,10 @@ const AddIncome = ({
           <Button
             variant="primary"
             type="submit"
-            onClick={(e) => handleIncomeSubmit(e)}
+            onClick={(e) => {
+              handleIncomeSubmit(e);
+              setShowIncome(false);
+            }}
           >
             SAVE
           </Button>

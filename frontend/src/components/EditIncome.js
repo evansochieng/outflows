@@ -127,7 +127,10 @@ function EditIncome({
           <Button
             variant="primary"
             type="submit"
-            onClick={() => handleIncomeUpdate(incomeDetails)}
+            onClick={() => {
+              handleIncomeUpdate(incomeDetails);
+              setIncEditPopup(false);
+            }}
           >
             SAVE CHANGES
           </Button>
